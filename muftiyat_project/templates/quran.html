@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Куран - Муфтияттын Исламий Портали{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="bg-dark-green text-white py-5">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="display-4 fw-bold mb-2">📖 Куран Карим</h1>
+                <p class="lead mb-0">Божественный Откровение - 114 сүрөлөр жана 6236 аяттар</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <i class="fas fa-book" style="font-size: 5rem; opacity: 0.2;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quran Controls -->
+<section class="py-4 bg-light">
+    <div class="container-lg">
+        <div class="row g-3">
+            <!-- Surah Search -->
+            <div class="col-md-4">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Сүрөнү издеңиз..."
+                    id="surah-search"
+                    onkeyup="searchSurah()"
+                >
+            </div>
+            
+            <!-- Translation -->
+            <div class="col-md-4">
+                <select class="form-select" id="translation-select" onchange="changeTranslation()">
+                    <option value="ar">Араб текст</option>
+                    <option value="ky">Кыргыз котормо</option>
+                    <option value="ru">Русский перевод</option>
+                    <option value="en">English Translation</option>
+                </select>
+            </div>
+            
+            <!-- Reciter -->
+            <div class="col-md-4">
+                <select class="form-select" id="reciter-select" onchange="changeReciter()">
+                    <option value="">Аудио тандаңыз</option>
+                    <option value="mishari">Мишари Аль-Афаси</option>
+                    <option value="sudais">Абдул-Рахман Ас-Судайс</option>
+                    <option value="shuraim">Салих Ибн Абдул-Азиз Ас-Шурайм</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container-lg">
+        <div class="row">
+            <!-- Surah List -->
+            <div class="col-lg-3 mb-4">
+                <h3 class="h5 fw-bold text-dark-green mb-3">
+                    <i class="fas fa-list me-2"></i>Сүрөлөр
+                </h3>
+                <div id="surah-list" class="list-group" style="max-height: 600px; overflow-y: auto;">
+                    <!-- Surahs will be loaded here -->
+                    <div class="text-center p-3">
+                        <div class="spinner-border text-emerald" role="status">
+                            <span class="visually-hidden">Жүктөлүүдө...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quran Content -->
+            <div class="col-lg-9">
+                <div id="quran-content" class="card border-0 shadow-sm">
+                    <div class="card-header bg-emerald text-white">
+                        <h4 id="surah-name" class="mb-0">Сүрө тандаңыз</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div id="quran-text" class="quran-text" style="font-size: 1.2rem; line-height: 2; text-align: right; direction: rtl;">
+                            <!-- Quran content will be here -->
+                            <p class="text-center text-muted">Сүрөнү тандаңыз</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Audio Player -->
+                <div id="audio-player" class="mt-4" style="display: none;">
+                    <div class="card border-0 shadow-sm bg-light-beige">
+                        <div class="card-body">
+                            <h6 class="card-title text-dark-green">
+                                <i class="fas fa-volume-up me-2"></i>Аудио Куран
+                            </h6>
+                            <audio controls class="w-100" style="background-color: white;">
+                                <source id="audio-source" type="audio/mpeg">
+                                Сиздин браузер аудиону колдоо эмес
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Info -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <h2 class="display-6 fw-bold text-dark-green mb-4">Куран Карим Жөнүндө</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-gold fw-bold">114</h3>
+                        <p class="mb-0">Сүрөлөр</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-gold fw-bold">6,236</h3>
+                        <p class="mb-0">Аяттар</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="text-gold fw-bold">30</h3>
+                        <p class="mb-0">Жүзүк (Juzz)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p class="mt-4 lead text-muted">
+            Куран - Исламдын святой китеби, Пророк Мухаммад (слов мир будь с ним) жанынан 
+            көз карандысыз айтылган Жүктүнүң сөз болуп урунган. Бул барлык мусульмандардын 
+            жашоосундагы толук маалымат жана жетекчилик булуп жүргөлөп коюлат.
+        </p>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Sample Quran data (in real app, this would be fetched from API)
+const surahs = [
+    { id: 1, name: "Аль-Фатиха", verses: 7 },
+    { id: 2, name: "Аль-Бакара", verses: 286 },
+    { id: 3, name: "Аль-Имран", verses: 200 },
+    // ... more surahs would be loaded from API
+];
+
+let currentSurah = null;
+let currentTranslation = 'ar';
+let currentReciter = 'mishari';
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadSurahList();
+});
+
+function loadSurahList() {
+    const list = document.getElementById('surah-list');
+    let html = '';
+    
+    surahs.forEach(surah => {
+        html += `
+            <button class="list-group-item list-group-item-action" onclick="loadSurah(${surah.id})">
+                <strong>${surah.name}</strong>
+                <br>
+                <small class="text-muted">${surah.verses} аяттар</small>
+            </button>
+        `;
+    });
+    
+    list.innerHTML = html;
+}
+
+function searchSurah() {
+    const query = document.getElementById('surah-search').value.toLowerCase();
+    const items = document.querySelectorAll('#surah-list .list-group-item');
+    
+    items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? '' : 'none';
+    });
+}
+
+function loadSurah(surahId) {
+    currentSurah = surahId;
+    
+    const surah = surahs.find(s => s.id === surahId);
+    if (!surah) return;
+    
+    document.getElementById('surah-name').textContent = surah.name;
+    
+    // Load quran content based on translation
+    loadQuranContent(surahId);
+    
+    // Load audio if reciter selected
+    if (currentReciter) {
+        loadAudio(surahId);
+    }
+}
+
+function loadQuranContent(surahId) {
+    const content = document.getElementById('quran-text');
+    
+    // Simulate loading content
+    content.innerHTML = `
+        <div class="text-center p-5">
+            <div class="spinner-border text-emerald" role="status">
+                <span class="visually-hidden">Жүктөлүүдө...</span>
+            </div>
+        </div>
+    `;
+    
+    // In real app, fetch from API
+    setTimeout(() => {
+        const sampleQuran = {
+            ar: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+            ky: "Аллахтын аты менен, ал эми Ар-Рахман жана Ар-Рахим.",
+            ru: "Во имя Аллаха, Милостивого, Милосердного!"
+        };
+        
+        content.innerHTML = `<p>${sampleQuran[currentTranslation] || sampleQuran.ar}</p>`;
+    }, 500);
+}
+
+function loadAudio(surahId) {
+    const player = document.getElementById('audio-player');
+    const audioSource = document.getElementById('audio-source');
+    
+    if (currentReciter) {
+        // Simulated audio URL (in real app, use actual MP3 URLs)
+        audioSource.src = `/audio/quran/${currentReciter}/surah-${surahId}.mp3`;
+        player.style.display = 'block';
+    } else {
+        player.style.display = 'none';
+    }
+}
+
+function changeTranslation() {
+    currentTranslation = document.getElementById('translation-select').value;
+    if (currentSurah) {
+        loadQuranContent(currentSurah);
+    }
+}
+
+function changeReciter() {
+    currentReciter = document.getElementById('reciter-select').value;
+    if (currentSurah) {
+        loadAudio(currentSurah);
+    }
+}
+</script>
+{% endblock %}

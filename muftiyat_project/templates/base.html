@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Кыргызстандагы Муфтияттын заманбап исламий маалымат портали">
+    <meta name="keywords" content="ислам, арабча, куран, намаз, мечит, диний">
+    <meta name="author" content="Муфтияттын Портали">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Муфтияттын Исламий Портали">
+    <meta property="og:description" content="Кыргызстандагы исламий маалымат жана ресурстар">
+    <meta property="og:type" content="website">
+    
+    <title>{% block title %}Муфтияттын Исламий Портали{% endblock %}</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/colors.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-green sticky-top shadow-sm">
+        <div class="container-lg">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="fas fa-mosque me-2"></i>
+                <span class="brand-text">Муфтияттын Портали</span>
+            </a>
+            
+            <!-- Hamburger -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Башкы бет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/news/">Жаңылыктар</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown">
+                            Ресурстар
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                            <li><a class="dropdown-item" href="/quran/">📖 Куран</a></li>
+                            <li><a class="dropdown-item" href="/hadith/">📚 Хадис</a></li>
+                            <li><a class="dropdown-item" href="/scholars/">👨‍🎓 Аалымдар</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/zakat/">💰 Зекет</a></li>
+                            <li><a class="dropdown-item" href="/prayer/">🕐 Намаз убакыты</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/fatwa/">🤔 Суроо-жооп</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact/">Байланыш</a>
+                    </li>
+                </ul>
+                
+                <!-- Language Selector -->
+                <div class="ms-3 dropdown">
+                    <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe me-1"></i> КГ
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item active" href="/kg/">Кыргызча</a></li>
+                        <li><a class="dropdown-item" href="/ru/">Русский</a></li>
+                        <li><a class="dropdown-item" href="/ar/">العربية</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-dark-green text-light mt-5 pt-5 pb-3">
+        <div class="container-lg">
+            <div class="row mb-4">
+                <!-- About -->
+                <div class="col-md-3 mb-4">
+                    <h5 class="text-gold mb-3">Портал тууралуу</h5>
+                    <p class="small">Кыргызстандагы Муфтияттын деңгээлинде исламий маалымат жана ресурстарды аттүүчүсүнүн заманбап портали.</p>
+                </div>
+                
+                <!-- Links -->
+                <div class="col-md-3 mb-4">
+                    <h5 class="text-gold mb-3">Навигация</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="/" class="text-light-link">Башкы бет</a></li>
+                        <li><a href="/news/" class="text-light-link">Жаңылыктар</a></li>
+                        <li><a href="/quran/" class="text-light-link">Куран</a></li>
+                        <li><a href="/prayer/" class="text-light-link">Намаз убакыты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="col-md-3 mb-4">
+                    <h5 class="text-gold mb-3">Байланыш</h5>
+                    <p class="small mb-2">
+                        <i class="fas fa-phone text-gold me-2"></i>
+                        +996 (312) 55-00-00
+                    </p>
+                    <p class="small mb-2">
+                        <i class="fas fa-envelope text-gold me-2"></i>
+                        info@muftiyat.kg
+                    </p>
+                    <p class="small">
+                        <i class="fas fa-map-marker-alt text-gold me-2"></i>
+                        Бишкек, Кыргызстан
+                    </p>
+                </div>
+                
+                <!-- Social -->
+                <div class="col-md-3 mb-4">
+                    <h5 class="text-gold mb-3">Социалдык сеттер</h5>
+                    <div class="social-links">
+                        <a href="#" class="btn btn-sm btn-outline-light me-2" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-outline-light me-2" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-outline-light me-2" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-outline-light" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <hr class="border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 small">
+                    <p class="mb-0">&copy; 2024 Муфтияттын Исламий Портали. Бардык укуктар сакталган.</p>
+                </div>
+                <div class="col-md-6 text-md-end small">
+                    <a href="#" class="text-light-link me-3">Жалпы шарттар</a>
+                    <a href="#" class="text-light-link">Купуялуулук саясаты</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- API Integration -->
+    <script src="{% static 'js/api.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

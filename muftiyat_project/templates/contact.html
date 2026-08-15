@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Контакт - Муфтияттын Исламий Портали{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="bg-dark-green text-white py-5">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="display-4 fw-bold mb-2">📞 Байланыш</h1>
+                <p class="lead mb-0">Муфтияттык өз ойлорүңүз жана суроолорыңыз менен байланышыңыз</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <i class="fas fa-envelope" style="font-size: 5rem; opacity: 0.2;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Info Cards -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <div class="feature-icon bg-emerald mx-auto mb-3">
+                            <i class="fas fa-map-marker-alt text-white"></i>
+                        </div>
+                        <h5 class="card-title text-dark-green">Адрес</h5>
+                        <p class="card-text text-muted">
+                            Бишкек шаар<br>
+                            Кыргызстан
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <div class="feature-icon bg-gold mx-auto mb-3">
+                            <i class="fas fa-phone text-dark-green"></i>
+                        </div>
+                        <h5 class="card-title text-dark-green">Телефон</h5>
+                        <p class="card-text text-muted">
+                            <a href="tel:+996312550000" class="link-dark-green">
+                                +996 (312) 55-00-00
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <div class="feature-icon bg-emerald mx-auto mb-3">
+                            <i class="fas fa-envelope text-white"></i>
+                        </div>
+                        <h5 class="card-title text-dark-green">Эл.почта</h5>
+                        <p class="card-text text-muted">
+                            <a href="mailto:info@muftiyat.kg" class="link-dark-green">
+                                info@muftiyat.kg
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form & Map -->
+<section class="py-5">
+    <div class="container-lg">
+        <div class="row g-5">
+            <!-- Contact Form -->
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold text-dark-green mb-4">Биз менен байланышыңыз</h2>
+                
+                <form data-contact-form>
+                    <div class="mb-3">
+                        <label class="form-label">Атыңыз <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Эл.почта <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Телефон</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="+996...">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Сабасы <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="subject" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Билдирүү <span class="text-danger">*</span></label>
+                        <textarea class="form-control" name="message" rows="6" required></textarea>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="privacy" required>
+                        <label class="form-check-label" for="privacy">
+                            Я согласен на обработку моих личных данных
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-emerald btn-lg w-100">
+                        <i class="fas fa-paper-plane me-2"></i>Жиберүү
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Info & Map -->
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold text-dark-green mb-4">Өндүрүшү</h2>
+                
+                <!-- Working Hours -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-dark-green text-white">
+                        <h5 class="mb-0">🕐 Иш убактысы</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="mb-2"><strong>Дүйшөмбү-Жума:</strong></p>
+                                <p class="text-muted">09:00 - 18:00</p>
+                            </div>
+                            <div class="col-6">
+                                <p class="mb-2"><strong>Сенби-Жекшемби:</strong></p>
+                                <p class="text-muted">Жабык</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Placeholder -->
+                <div class="card border-0 shadow-sm" style="height: 350px;">
+                    <img 
+                        src="https://via.placeholder.com/500x350?text=Map" 
+                        alt="Карта" 
+                        class="card-img-top"
+                        style="height: 100%; object-fit: cover;"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <h2 class="display-6 fw-bold text-dark-green mb-4 text-center">Жиш-жай сураган суроолор</h2>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="contactFAQ">
+                    <div class="accordion-item border-0 shadow-sm mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <strong>Муфтияттык деген эмне?</strong>
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#contactFAQ">
+                            <div class="accordion-body">
+                                Муфтияттык - исламдын кылымдуу окту жана таъсирин алуучу демагилик соста 
+                                ишемеси жана ислямдын шериеттик мағүма берилүүсүнүн борборлоруна чукун 
+                                басылуучу мәкәме болуп жүргөнөө билсек...
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item border-0 shadow-sm mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <strong>Портал кандай таябыттарды сунуша алат?</strong>
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#contactFAQ">
+                            <div class="accordion-body">
+                                Портал төмөндөгүлөрдү сунуша алат:
+                                • Куран аяттарын окуу жана угуу
+                                • Диний суроолорго жооп алуу
+                                • Намаз убакыттарын билүү
+                                • Зекет эсептөө
+                                • Мечиттер жана аалымдар жөнүндө маалымат
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item border-0 shadow-sm mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <strong>Портал үчүн эмне үйрөтпөйт?</strong>
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#contactFAQ">
+                            <div class="accordion-body">
+                                Портал бизге колдонуучунун төмөндөгү өндүрүштөрүн берүүнү сунуша алат:
+                                • Биз сиздин төмөндөгүлөрдүн чубалуу колдонуусу үчүн каалат:
+                                  - Персоналдык маалымат
+                                  - Финансылык маалымат
+                                  - Жалпы биз сиздин суктанчыларын колдонот
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5">
+    <div class="container-lg">
+        <h2 class="display-6 fw-bold text-dark-green mb-4 text-center">Портал боюнча ой-пикирлер</h2>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                        </div>
+                        <p class="card-text">
+                            "Портал Кыргызстандагы эң чактуу исламий ресурс. Куран жана намаз убакытын 
+                            ийгиликтүүлүк менен колдоно алам."
+                        </p>
+                        <footer class="blockquote-footer">
+                            Жаныбек А. <br>
+                            <small>Бишкек</small>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                        </div>
+                        <p class="card-text">
+                            "Диний суроолорго жооп алууну өтүнүч жасалды. Аалымдар өтүнүч болгон суроолорго 
+                            актуалдуу жообу берүүлөрүнө берет."
+                        </p>
+                        <footer class="blockquote-footer">
+                            Айлина К. <br>
+                            <small>Ошмушкерүлүк</small>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                            <i class="fas fa-star text-gold"></i>
+                        </div>
+                        <p class="card-text">
+                            "Портал исламий окутууны экөмүн жүргүзүүдө толук кызмат берет. Баарыга сунуштайбыз."
+                        </p>
+                        <footer class="blockquote-footer">
+                            Чынар Н. <br>
+                            <small>Джалал-Абад</small>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5 bg-emerald text-white">
+    <div class="container-lg text-center">
+        <h2 class="h3 fw-bold mb-2">Суроо болдуңызбы?</h2>
+        <p class="mb-4">Муфтияттык өз портали боюнча көбүрөөк маалымат алыңыз</p>
+        <a href="/" class="btn btn-light btn-lg px-5">
+            <i class="fas fa-home me-2"></i>Башкы бет
+        </a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Суроо-жооп (Фатва) - Муфтияттын Исламий Портали{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="bg-dark-green text-white py-5">
+    <div class="container-lg">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="display-4 fw-bold mb-2">🤔 Суроо-жооп</h1>
+                <p class="lead mb-0">Диний суроолорго аалымдардан жооп алыңыз</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <i class="fas fa-question-circle" style="font-size: 5rem; opacity: 0.2;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Info -->
+<section class="py-4 bg-emerald text-white">
+    <div class="container-lg">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h3 class="mb-0">500+</h3>
+                <p class="mb-0 small">Жооп берилген суроолор</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="mb-0">50+</h3>
+                <p class="mb-0 small">Белсенди аалымдар</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="mb-0">24/7</h3>
+                <p class="mb-0 small">Жооп берүү үчүн даяр</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container-lg">
+        <div class="row g-5">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <!-- Ask Question Form -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-dark-green text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-pen me-2"></i>Суроо сорооңуз
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="question-form" data-contact-form>
+                            <div class="mb-3">
+                                <label class="form-label">Атыңыз</label>
+                                <input type="text" class="form-control" name="name" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Эл.почта</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Суро баштамасы</label>
+                                <input type="text" class="form-control" name="subject" placeholder="Суро баштамасын жазыңыз" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Деталдуу суро</label>
+                                <textarea class="form-control" name="message" rows="5" placeholder="Суронузду деталдуу жазыңыз" required></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Категория</label>
+                                <select class="form-select" name="category">
+                                    <option value="">Бүтүн категория</option>
+                                    <option value="aqeeda">Ақыда (Веру)</option>
+                                    <option value="fiqh">Фикъх (Шариат)</option>
+                                    <option value="hadith">Хадис</option>
+                                    <option value="sunnah">Сунна</option>
+                                    <option value="other">Башка</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-emerald w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Жиберүү
+                            </button>
+                        </form>
+                        
+                        <div class="alert alert-info mt-3 mb-0" role="alert">
+                            <small>
+                                <strong>Эскертүүлөр:</strong><br>
+                                • Суронуз уячалаңыз жана салуу<br>
+                                • Жоопко 24-48 сааттын ичинде суроо кутуңуз<br>
+                                • Ачык суроолор максимум же жиберилиши мүмкүн
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Categories Filter -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-emerald text-white">
+                        <h5 class="mb-0">Категориялар</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <button class="list-group-item list-group-item-action" onclick="filterByCategory('')">
+                            Бүтүндөй суроолор
+                        </button>
+                        <button class="list-group-item list-group-item-action" onclick="filterByCategory('aqeeda')">
+                            Ақыда (Веру)
+                        </button>
+                        <button class="list-group-item list-group-item-action" onclick="filterByCategory('fiqh')">
+                            Фикъх (Шариат)
+                        </button>
+                        <button class="list-group-item list-group-item-action" onclick="filterByCategory('hadith')">
+                            Хадис
+                        </button>
+                        <button class="list-group-item list-group-item-action" onclick="filterByCategory('sunnah')">
+                            Сунна
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Questions List -->
+            <div class="col-lg-9">
+                <!-- Search & Sort -->
+                <div class="input-group mb-4">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Суроолорду издеңиз..."
+                        id="question-search"
+                        onkeyup="searchQuestions()"
+                    >
+                    <select class="form-select w-auto" id="sort-select" onchange="sortQuestions()">
+                        <option value="-created_at">Жаңысы алдында</option>
+                        <option value="created_at">Эскиси алдында</option>
+                    </select>
+                </div>
+                
+                <!-- Questions Container -->
+                <div id="questions-container">
+                    <div class="text-center p-5">
+                        <div class="spinner-border text-emerald" role="status">
+                            <span class="visually-hidden">Жүктөлүүдө...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Accordion -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <h2 class="display-6 fw-bold text-dark-green mb-4">Жиш-жай сураган суроолор (FAQ)</h2>
+        
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item border-0 mb-3 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        <strong>Намаз кайдан сапты башталат?</strong>
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Намаз ислямдын столптарынын экиничилери болуп, окыцы жарым жыл айда бешинчи жолу окутулат. 
+                        Намаз саўатты жүргүзүлүш керек...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item border-0 mb-3 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        <strong>Орозо кагдан орозо тапты?</strong>
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Орозо Ислямдын уч столптарынын үчүнчүлери болуп, Рамазан ойын айда ооруу 
+                        керек жана чөндүүлүү сыналыны багалатты үтүлүшүм болот...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item border-0 mb-3 shadow-sm">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        <strong>Зекет кандай эсептелет?</strong>
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Зекет - бай адамдардын жүктүкасы болуп, жылда бир жолу активдеринин 2.5% 
+                        жол сынатты ана болуп топтонот...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let currentCategory = '';
+let currentSort = '-created_at';
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadQuestions();
+});
+
+async function loadQuestions() {
+    const container = document.getElementById('questions-container');
+    
+    try {
+        const params = {
+            ordering: currentSort,
+            page_size: 10
+        };
+        
+        if (currentCategory) params.category = currentCategory;
+        
+        const response = await api.getContactMessages(params);
+        
+        let html = '';
+        if (response.results && response.results.length > 0) {
+            response.results.forEach(item => {
+                const status = item.status || 'new';
+                const statusBadge = {
+                    'new': '<span class="badge badge-soft-warning">Жаңы</span>',
+                    'read': '<span class="badge badge-soft-info">Окулды</span>',
+                    'replied': '<span class="badge badge-soft-success">Жооп берилди</span>',
+                    'closed': '<span class="badge badge-soft-secondary">Жабылды</span>'
+                };
+                
+                html += `
+                    <div class="card border-0 shadow-sm mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0 text-dark-green">${item.subject}</h5>
+                                ${statusBadge[status] || ''}
+                            </div>
+                            
+                            <p class="card-text text-muted">
+                                <small>
+                                    <i class="fas fa-user me-1"></i>${item.name} •
+                                    <i class="fas fa-calendar me-1"></i>${new Date(item.created_at).toLocaleDateString('ky-KG')}
+                                </small>
+                            </p>
+                            
+                            <p class="card-text">${item.message.substring(0, 200)}...</p>
+                            
+                            ${item.reply ? `
+                                <div class="alert alert-success mt-3 mb-0">
+                                    <strong>Жооп:</strong> ${item.reply}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+        } else {
+            html = `<div class="alert alert-info">Суроолор табылган жок</div>`;
+        }
+        
+        container.innerHTML = html;
+    } catch (error) {
+        console.error('Error loading questions:', error);
+        container.innerHTML = `<div class="alert alert-danger">Суроолорду жүктөө унчукта катасы болду</div>`;
+    }
+}
+
+function searchQuestions() {
+    const query = document.getElementById('question-search').value.toLowerCase();
+    const items = document.querySelectorAll('#questions-container .card');
+    
+    items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? '' : 'none';
+    });
+}
+
+function filterByCategory(category) {
+    currentCategory = category;
+    loadQuestions();
+}
+
+function sortQuestions() {
+    currentSort = document.getElementById('sort-select').value;
+    loadQuestions();
+}
+</script>
+{% endblock %}
