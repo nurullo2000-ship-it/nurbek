@@ -1,14 +1,16 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from . import views
 
 urlpatterns = [
     path("", views.home, name="home"),
     path("register/", views.register, name="register"),
+    path("service-worker.js", views.service_worker, name="service-worker"),
     path("api/health/", views.api_health, name="api-health"),
+    path("api/", include("apps.core.urls")),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("admin/", admin.site.urls),

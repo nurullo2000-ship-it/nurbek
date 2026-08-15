@@ -3,6 +3,7 @@ Serializers for core app
 """
 
 from rest_framework import serializers
+from drf_spectacular.utils import extend_schema_field
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
 from .models import User, Role, ContactMessage, Category, Tag, Banner, SiteConfiguration
@@ -17,7 +18,8 @@ class RoleSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'permissions_count']
         read_only_fields = ['id']
     
-    def get_permissions_count(self, obj):
+    @extend_schema_field(serializers.IntegerField())
+    def get_permissions_count(self, obj) -> int:
         return obj.permissions.count()
 
 
@@ -115,7 +117,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 class BannerSerializer(serializers.ModelSerializer):
     """Serializer for Banner model"""
-    is_active_now = serializers.ReadOnlyField()
+    is_active_now = serializers.BooleanField(read_only=True)
     
     class Meta:
         model = Banner
@@ -139,3 +141,9 @@ class SiteConfigurationSerializer(serializers.ModelSerializer):
         read_only_fields = [
             'site_logo', 'site_icon'  # Only admins can upload
         ]
+
+
+class HealthStatusSerializer(serializers.Serializer):
+    """Response returned by the API health endpoints."""
+    status = serializers.CharField()
+    service = serializers.CharField(required=False)

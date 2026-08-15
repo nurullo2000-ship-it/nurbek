@@ -1,4 +1,7 @@
 document.querySelector('.menu-button')?.addEventListener('click', () => {
+  const button = document.querySelector('.menu-button');
   const nav = document.querySelector('nav');
-  nav.style.display = nav.style.display === 'flex' ? '' : 'flex';
+  const isOpen = nav.style.display === 'flex';
+  nav.style.display = isOpen ? '' : 'flex';
+  button.setAttribute('aria-expanded', String(!isOpen));
 });

@@ -1,0 +1,18 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'kg.muftiyat.mobile'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'kg.muftiyat.mobile'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+        // Replace this with the HTTPS address after deploying the Django site.
+        buildConfigField 'String', 'SITE_URL', '"https://example.com/"'
+    }
+}

@@ -6,13 +6,15 @@ from rest_framework import viewsets, status, filters
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
+from drf_spectacular.utils import extend_schema
 from django_filters.rest_framework import DjangoFilterBackend
 from django.utils.translation import gettext_lazy as _
 from .models import User, Role, ContactMessage, Category, Tag, Banner, SiteConfiguration
 from .serializers import (
     UserSerializer, UserDetailSerializer, UserCreateSerializer, UserUpdateSerializer,
     RoleSerializer, ContactMessageSerializer, ContactMessageDetailSerializer,
-    CategorySerializer, TagSerializer, BannerSerializer, SiteConfigurationSerializer
+    CategorySerializer, TagSerializer, BannerSerializer, SiteConfigurationSerializer,
+    HealthStatusSerializer
 )
 
 
@@ -222,6 +224,7 @@ class HealthCheckView(viewsets.ViewSet):
     """
     permission_classes = [AllowAny]
     
+    @extend_schema(responses=HealthStatusSerializer)
     @action(detail=False, methods=['get'])
     def check(self, request):
         """Check if API is healthy"""

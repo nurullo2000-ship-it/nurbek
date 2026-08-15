@@ -1,26 +1,35 @@
-
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ky">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Кыргызстан Мусулмандарынын Дин Башкармалыгы</title>
+  <meta name="description" content="Кыргызстан Мусулмандарынын Дин Башкармалыгынын расмий маалымат порталы.">
+  <meta name="theme-color" content="#0b4b3c">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Кыргызстан Муфтияты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="manifest" href="{% static 'manifest.webmanifest' %}">
+  <link rel="icon" href="{% static 'icons/muftiyat-icon.svg' %}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{% static 'icons/muftiyat-icon.svg' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="/">
-        <span class="brand-mark">☪</span>
+      <a class="brand" href="/" aria-label="Башкы бет">
+        <span class="brand-mark" aria-hidden="true">☪</span>
         <span>Муфтият<br><small>Кыргызстан</small></span>
       </a>
-      <button class="menu-button" aria-label="Менюну ачуу">☰</button>
-      <nav>
+      <button class="menu-button" type="button" aria-label="Менюну ачуу" aria-expanded="false">☰</button>
+      <nav aria-label="Негизги меню">
         <a href="#news">Жаңылыктар</a>
         <a href="#articles">Макалалар</a>
         <a href="#prayer">Намаз убактысы</a>
-        <a href="#mosques">Мечиттер</a> 
+        <a href="#mosques">Мечиттер</a>
         <a class="nav-register" href="/register/">Катталуу</a>
       </nav>
     </div>
@@ -28,95 +37,59 @@
 
   <main>
     <section class="hero">
-      <div class="container Hero-content">
+      <div class="container hero-content">
         <p class="eyebrow">БИСМИЛЛАХИР-РАХМАНИР-РАХИМ</p>
         <h1>Ыйман, билим жана биримдик</h1>
-        <p>Кыргызстан мусулмандары үчүн ишенимдүү маалымат жана руханий багыт.</p>
-        <a class="button" href="#prayer">Бүгүнкү намаз убактысы</a>
+        <p>Кыргызстан мусулмандары үчүн ишенимдүү маалымат, руханий багыт жана коомдук кызматтар.</p>
+        <a class="button" href="#prayer">Бүгүнкү намаз убактысы <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <section id="news" class="containersection">
-      <div class="section-heading">
-        <p class="eyebrow">АКЫРКЫСЫ</p>
-        <h2>Жаңылыктар</h2>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <span>12 августа 2026 г.</span>
-          <h3>Аймактардагы диний агартуу иштери</h3>
-          <p>Коомдогу ынтымак жана руханий баалуулуктар тууралуу жолугушуулар өтүүдө.</p>
-        </article>
-        <article class="card">
-          <span>10 августа 2026</span>
-          <h3>Жаштар үчүн билим берүү сабактары</h3>
-          <p>Мечиттердеги ачык сабактарга катталуу башталды.</p>
-        </article>
-        <article class="card">
-          <span>08-август 2026</span>
-          <h3>Кайрымдуулук — биримдиктин белгиси</h3>
-          <p>Жакшылык кылууга багытталган жаңы демилгелер.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="articles" class="cream">
-      <div class="containersection">
+    <section id="news" class="section">
+      <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">БИЛИМ</p>
-          <h2>Диний макалалар</h2>
+          <div><p class="eyebrow">АКЫРКЫСЫ</p><h2>Жаңылыктар</h2></div>
+          <a class="section-link" href="/news/">Баарын көрүү →</a>
         </div>
         <div class="cards">
-          <article class="card Article">
-            <h3>Куранды түшүнүп окуу</h3>
-            <p>Күнүмдүк жашоодо Курандын адеп-ахлактык насааттарын колдонуу.</p>
-            <a href="#">Окуу →</a>
-          </article>
-          <article class="card Article">
-            <h3>Үй-бүлөдөгү мээрим</h3>
-            <p>Ынтымактуу үй-бүлө куруунун руханий негизи.</p>
-            <a href="#">Окуу →</a>
-          </article>
-          <article class="card Article">
-            <h3>Сабыр жана шүгүр</h3>
-            <p>Жашоодогу кыйынчылыкта ыймандын күчү.</p>
-            <a href="#">Окуу →</a>
-          </article>
+          <article class="card"><span>12-август, 2026</span><h3>Аймактардагы диний агартуу иштери</h3><p>Коомдогу ынтымак жана руханий баалуулуктар тууралуу жолугушуулар өтүүдө.</p></article>
+          <article class="card"><span>10-август, 2026</span><h3>Жаштар үчүн билим берүү сабактары</h3><p>Мечиттердеги ачык сабактарга катталуу башталды.</p></article>
+          <article class="card"><span>08-август, 2026</span><h3>Кайрымдуулук — биримдиктин белгиси</h3><p>Жакшылык кылууга багытталган жаңы демилгелер менен таанышыңыз.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="prayer" class="containersection Split">
-      <div>
-        <p class="eyebrow">БИШКЕК</p>
-        <h2>Бүгүнкү намаз убактысы</h2>
-        <p>Убакыттар демонстрация катары көрсөтүлгөн. Кийин API менен жаңыртылат.</p>
-      </div>
-      <div class="prayer-grid">
-        <div><b>Багымдат</b><span>04:28</span></div>
-        <div><b>Бешим</b><span>13:18</span></div>
-        <div><b>Аср</b> <span>17:32</span></div>
-        <div><b>Шам</b><span>20:08</span></div>
-        <div><b>Куптан</b><span>21:42</span></div>
+    <section id="articles" class="section cream">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">БИЛИМ</p><h2>Диний макалалар</h2></div></div>
+        <div class="cards">
+          <article class="card article"><h3>Куранды түшүнүп окуу</h3><p>Күнүмдүк жашоодо Курандын адеп-ахлактык насааттарын колдонуу.</p><a href="#">Окуу →</a></article>
+          <article class="card article"><h3>Үй-бүлөдөгү мээрим</h3><p>Ынтымактуу үй-бүлө куруунун руханий негизи.</p><a href="#">Окуу →</a></article>
+          <article class="card article"><h3>Сабыр жана шүгүр</h3><p>Жашоодогу кыйынчылыкта ыймандын күчү тууралуу ой жүгүртүү.</p><a href="#">Окуу →</a></article>
+        </div>
       </div>
     </section>
 
-    <section id="mosques" class="green">
-      <div class="containersection">
-        <p class="eyebrow gold">ЖАМААТ</p>
-        <h2>Мечиттер жана коомчулук</h2>
-        <p>Аймагыңыздагы мечиттер, сабактар жана иш-чаралар тууралуу маалымат жакында бул жерден жеткиликтүү болот.</p>
+    <section id="prayer" class="section">
+      <div class="container split">
+        <div><p class="eyebrow">БИШКЕК</p><h2>Бүгүнкү намаз убактысы</h2><p>Убакыттар учурда демонстрация катары көрсөтүлдү. Кийин API аркылуу автоматтык жаңыртылат.</p></div>
+        <div class="prayer-grid">
+          <div><b>Багымдат</b><span>04:28</span></div><div><b>Бешим</b><span>13:18</span></div><div><b>Аср</b><span>17:32</span></div><div><b>Шам</b><span>20:08</span></div><div><b>Куптан</b><span>21:42</span></div>
+        </div>
       </div>
+    </section>
+
+    <section id="mosques" class="section green">
+      <div class="container"><p class="eyebrow gold">ЖАМААТ</p><h2>Мечиттер жана коомчулук</h2><p>Аймагыңыздагы мечиттер, сабактар жана иш-чаралар тууралуу маалымат жакында ушул жерден жеткиликтүү болот.</p></div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <strong>Муфтият Кыргызстана</strong>
-      <p>© 2026. Бардык укуктар корголгон.</p>
-    </div>
-  </footer>
-
+  <footer><div class="container"><strong>Муфтият Кыргызстан</strong><p>© 2026. Бардык укуктар корголгон.</p></div></footer>
   <script src="{% static 'js/main.js' %}"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js'));
+    }
+  </script>
 </body>
 </html>

@@ -51,6 +51,8 @@ nav a:hover::after { transform: scaleX(1); }
 .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 32px; }
 .section-heading h2, .split h2, .green h2 { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(30px, 4vw, 42px); line-height: 1.2; }
 .section-heading .eyebrow { margin-bottom: 6px; }
+.section-link { color: var(--green-700); font-size: 14px; font-weight: 800; text-decoration: none; }
+.section-link:hover { color: #a47a20; transform: translateX(3px); }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 23px; }
 .card { position: relative; min-height: 230px; padding: 28px; overflow: hidden; border: 1px solid var(--line); border-radius: 11px; background: var(--paper); box-shadow: 0 6px 20px rgba(14,65,52,.04); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
 .card::before { position: absolute; top: 0; left: 0; width: 58px; height: 4px; background: var(--gold); content: ''; transition: width .25s ease; }
@@ -116,6 +118,7 @@ footer p { margin: 5px 0 0; color: #9db1aa; font-size: 13px; }
   .hero-content { padding: 60px 0; }
   .section { padding: 64px 0; }
   .cards, .split { grid-template-columns: 1fr; gap: 18px; }
+  .section-heading { align-items: flex-start; gap: 12px; flex-direction: column; }
   .prayer-grid { grid-template-columns: repeat(2, 1fr); }
   .prayer-grid div + div { border-left: 1px solid var(--line); }
   .prayer-grid div:nth-child(odd) { border-left: 0; }
